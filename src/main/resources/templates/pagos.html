@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestión de Pagos</title>
+    <style>
+        /* Igual estilo que en usuarios */
+    </style>
+</head>
+<body>
+<h2>Historial de Pagos</h2>
+<a class="button" th:href="@{/pagos/nuevo}">Registrar Pago</a>
+<table>
+    <thead>
+    <tr><th>ID</th><th>Usuario</th><th>Monto</th><th>Fecha</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="pago : ${pagos}">
+        <td th:text="${pago.id}"></td>
+        <td th:text="${pago.usuario.nombre}"></td>
+        <td th:text="${pago.monto}"></td>
+        <td th:text="${#dates.format(pago.fecha, 'dd/MM/yyyy')}"></td>
+        <td>
+            <a class="button" th:href="@{'/pagos/eliminar/' + ${pago.id}}"
+               style="background: #dc3545;">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestión de Vehículos</title>
+    <style>
+        /* Mismo estilo que en usuarios */
+    </style>
+</head>
+<body>
+<h2>Vehículos Registrados</h2>
+<a class="button" th:href="@{/vehiculos/nuevo}">Añadir Vehículo</a>
+<table>
+    <thead>
+    <tr><th>Placa</th><th>Marca</th><th>Color</th><th>Usuario</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="vehiculo : ${vehiculos}">
+        <td th:text="${vehiculo.placa}"></td>
+        <td th:text="${vehiculo.marca}"></td>
+        <td th:text="${vehiculo.color}"></td>
+        <td th:text="${vehiculo.usuario.nombre}"></td>
+        <td>
+            <a class="button" th:href="@{'/vehiculos/editar/' + ${vehiculo.id}}">Editar</a>
+            <a class="button" th:href="@{'/vehiculos/eliminar/' + ${vehiculo.id}}"
+               style="background: #dc3545;">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

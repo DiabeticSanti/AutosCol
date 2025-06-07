@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestión de Celdas</title>
+    <style>
+        /* Igual estilo que en usuarios */
+    </style>
+</head>
+<body>
+<h2>Celdas Disponibles</h2>
+<a class="button" th:href="@{/celdas/nuevo}">Añadir Celda</a>
+<table>
+    <thead>
+    <tr><th>ID</th><th>Estado</th><th>Ubicación</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+    <tr th:each="celda : ${celdas}">
+        <td th:text="${celda.id}"></td>
+        <td th:text="${celda.estado}"></td>
+        <td th:text="${celda.ubicacion}"></td>
+        <td>
+            <a class="button" th:href="@{'/celdas/editar/' + ${celda.id}}">Editar</a>
+            <a class="button" th:href="@{'/celdas/eliminar/' + ${celda.id}}"
+               style="background: #dc3545;">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
